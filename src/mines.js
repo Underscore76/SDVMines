@@ -22,14 +22,24 @@ export const MinesDrawer = () => {
   const onMouseDown = (e) => {
     console.log("onMouseDown")
     console.log({e})
-    moveByTileOffset(1,0)
+    //moveByTileOffset(1,0)
   }
 
   const onMouseUp = (e) => {
     console.log("onMouseUp")
-    console.log({e})
-    moveByTileOffset(0,1)
-  }
+    console.log({ e })
+    var xmove = 0
+    var ymove = 0
+    if (e.evt.button === 0) {
+      xmove = 1
+      ymove = 2
+    } else if (e.evt.button === 2) {
+      xmove = -1
+      ymove = -2
+    }
+    moveByTileOffset(xmove,ymove)
+    }
+
 
   // modify the position when level changes
   useEffect(() =>{
@@ -75,12 +85,12 @@ export const MinesDrawer = () => {
       <div className={classes.drawer}>
       <Stage width={window.innerWidth} height={window.innerHeight} className={classes.stage}>
         <MinesLayer floor={level % 40}/>
-        <DraggableLayer
-          posX={posX}
-          posY={posY}
-          onDragMove={onDragMove}
-          onMouseDown={onMouseDown}
-          onMouseUp={onMouseUp}
+          <DraggableLayer
+                      posX={posX}
+                      posY={posY}
+                      onDragMove={onDragMove}
+                      onMouseDown={onMouseDown}
+                      onMouseUp={onMouseUp}
         />
       </Stage>
       </div>
