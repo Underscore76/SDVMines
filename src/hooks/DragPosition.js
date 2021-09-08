@@ -19,7 +19,8 @@ function useDragPosition() {
       }
 
     const updateFloor = (floorDiff) => {
-        setPosY(posY + floorDiff * grid)
+        // going down floors (positive diff) moves the grid up
+        setPosY(posY - floorDiff * grid)
     }
     return {posX, posY, onDragMove, updateFloor}
 };
