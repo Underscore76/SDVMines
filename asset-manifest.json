@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/SDVMines/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/SDVMines/static/js/main.044fdad2.chunk.js",
-    "main.js.map": "/SDVMines/static/js/main.044fdad2.chunk.js.map",
+    "main.js": "/SDVMines/static/js/main.6f44b515.chunk.js",
+    "main.js.map": "/SDVMines/static/js/main.6f44b515.chunk.js.map",
     "runtime-main.js": "/SDVMines/static/js/runtime-main.760dc322.js",
     "runtime-main.js.map": "/SDVMines/static/js/runtime-main.760dc322.js.map",
     "static/js/2.6dbf0e7f.chunk.js": "/SDVMines/static/js/2.6dbf0e7f.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.760dc322.js",
     "static/js/2.6dbf0e7f.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.044fdad2.chunk.js"
+    "static/js/main.6f44b515.chunk.js"
   ]
 }
