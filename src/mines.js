@@ -17,14 +17,26 @@ export const MinesDrawer = () => {
   const classes = useStyles();
   const [level, setLevel] = useState(1);
   const [lastLevel, setLastLevel] = useState(1);
-  const {posX, posY, onDragMove, updateFloor} = useDragPosition();
+  const {posX, posY, onDragMove, updateFloor, moveByTileOffset} = useDragPosition();
   
+  const onMouseDown = (e) => {
+    console.log("onMouseDown")
+    console.log({e})
+    moveByTileOffset(1,0)
+  }
+
+  const onMouseUp = (e) => {
+    console.log("onMouseUp")
+    console.log({e})
+    moveByTileOffset(0,1)
+  }
 
   // modify the position when level changes
   useEffect(() =>{
     let levelDiff = (level - lastLevel);
     updateFloor(levelDiff);
   }, [lastLevel, level])
+
 
   // go up a floor
   const clickPrev = useCallback(() => {
@@ -62,8 +74,14 @@ export const MinesDrawer = () => {
       
       <div className={classes.drawer}>
       <Stage width={window.innerWidth} height={window.innerHeight} className={classes.stage}>
-        {MinesLayer(level % 40)}
-        {DraggableLayer(posX, posY, onDragMove)}
+        <MinesLayer floor={level % 40}/>
+        <DraggableLayer
+          posX={posX}
+          posY={posY}
+          onDragMove={onDragMove}
+          onMouseDown={onMouseDown}
+          onMouseUp={onMouseUp}
+        />
       </Stage>
       </div>
     </div>

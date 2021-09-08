@@ -7,6 +7,10 @@ function useDragPosition() {
     const [posX, setPosX] = useState(grid * tileStartX);
     const [posY, setPosY] = useState(grid* tileStartY);
 
+    const moveByTileOffset = (x,y) => {
+        setPosX(posX + x * grid);
+        setPosY(posY + y * grid);
+    }
     const onDragMove = (e) => {
         // calculate the correct grid loc
         let newX = Math.round(e.target.x() / grid) * grid;
@@ -22,7 +26,7 @@ function useDragPosition() {
         // going down floors (positive diff) moves the grid up
         setPosY(posY - floorDiff * grid)
     }
-    return {posX, posY, onDragMove, updateFloor}
+    return {posX, posY, onDragMove, updateFloor, moveByTileOffset}
 };
 
 export default useDragPosition;
