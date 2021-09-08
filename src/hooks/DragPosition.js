@@ -3,7 +3,7 @@ import { useState } from 'react';
 function useDragPosition() {
     const grid = 16;
     const tileStartX = 0; 
-    const tileStartY = -60; // so we can scroll down without a ton of hassle
+    const tileStartY = -20; // so we can scroll down without a ton of hassle
     const [posX, setPosX] = useState(grid * tileStartX);
     const [posY, setPosY] = useState(grid* tileStartY);
 
