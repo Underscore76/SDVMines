@@ -1,17 +1,15 @@
-import { useState, useCallback, useEffect } from "react";
 import { Layer, Image } from "react-konva";
 import useImage from 'use-image';
 
-export function DraggableLayer(position, onDragMove) {
-    const [image] = useImage(`/assets/ladder_grid.png`);
-
+export function DraggableLayer(posX, posY, onDragMove) {
+    const [image] = useImage(`${process.env.PUBLIC_URL}/assets/ladder_grid.png`);
     return (
         <Layer >
             <Image 
                 image={image} 
                 draggable={true}
-                x={position.X}
-                y={position.Y}
+                x={posX}
+                y={posY}
                 onDragMove={onDragMove}                
             />
         </Layer>
