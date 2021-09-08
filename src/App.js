@@ -4,8 +4,8 @@ import { Details } from './components/Details'
 function App() {
   return (
     <div className="App">
-      <MinesDrawer/>
-      <Details/>
+      <MinesDrawer />
+      <Details />
     </div>
   );
 }
