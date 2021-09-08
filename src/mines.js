@@ -17,17 +17,19 @@ export const MinesDrawer = () => {
   const classes = useStyles();
   const [level, setLevel] = useState(1);
   const [lastLevel, setLastLevel] = useState(1);
-  const {posX, posY, onDragMove, updateFloor, moveByTileOffset} = useDragPosition();
-  
+  const { posX, posY, onDragMove, updateFloor, moveByTileOffset } = useDragPosition();
+
   const onMouseDown = (e) => {
     console.log("onMouseDown")
-    console.log({e})
+    console.log({ e })
     //moveByTileOffset(1,0)
   }
 
   const onMouseUp = (e) => {
     console.log("onMouseUp")
     console.log({ e })
+  }
+  const onClick = (e) => {
     var xmove = 0
     var ymove = 0
     if (e.evt.button === 0) {
@@ -37,12 +39,12 @@ export const MinesDrawer = () => {
       xmove = -1
       ymove = -2
     }
-    moveByTileOffset(xmove,ymove)
-    }
+    moveByTileOffset(xmove, ymove)
+  }
 
 
   // modify the position when level changes
-  useEffect(() =>{
+  useEffect(() => {
     let levelDiff = (level - lastLevel);
     updateFloor(levelDiff);
   }, [lastLevel, level])
@@ -53,9 +55,9 @@ export const MinesDrawer = () => {
     setLastLevel(level)
     if (level === 1) { return; }
     let floor = level - 1;
-    
+
     if (floor % 10 === 0) {
-      setLevel(floor-1);
+      setLevel(floor - 1);
     } else {
       setLevel(floor)
     }
@@ -68,7 +70,7 @@ export const MinesDrawer = () => {
     let floor = level + 1;
 
     if (floor % 10 === 0) {
-      setLevel(floor+1);
+      setLevel(floor + 1);
     } else {
       setLevel(floor)
     }
@@ -81,18 +83,19 @@ export const MinesDrawer = () => {
         <Button disabled={true}>{level}</Button>
         <Button onClick={clickNext} color="primary">Next</Button>
       </ButtonGroup>
-      
+
       <div className={classes.drawer}>
-      <Stage width={window.innerWidth} height={window.innerHeight} className={classes.stage}>
-        <MinesLayer floor={level % 40}/>
+        <Stage width={window.innerWidth} height={window.innerHeight} className={classes.stage}>
+          <MinesLayer floor={level % 40} />
           <DraggableLayer
-                      posX={posX}
-                      posY={posY}
-                      onDragMove={onDragMove}
-                      onMouseDown={onMouseDown}
-                      onMouseUp={onMouseUp}
-        />
-      </Stage>
+            posX={posX}
+            posY={posY}
+            onDragMove={onDragMove}
+            // onMouseDown={onMouseDown}
+            // onMouseUp={onMouseUp}
+            onClick={onClick}
+          />
+        </Stage>
       </div>
     </div>
   );
