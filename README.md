@@ -5,6 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+### `npm run deploy`
+
+Deploy page to [https://underscore76.github.io/SDVMines/](https://underscore76.github.io/SDVMines/)
 
 ### `yarn start`
 
